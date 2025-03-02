@@ -15,10 +15,10 @@ class Book {
 }; // class for book
 
 const book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 123456, 5);
-console.log(book1.getDetails()); // Title: The Great Gatsby, Author: undefined, ISBN: 123456, Copies: 5
+console.log(book1.getDetails()); // Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 5
 
 book1.updateCopies(-1); // udating copies of book
-console.log(book1.getDetails()); // Title: The Great Gatsby, Author: undefined, ISBN: 123456, Copies: 4
+console.log(book1.getDetails()); // Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4
 
 // Task 2 creating a borrower class
 class Borrower {
@@ -87,3 +87,17 @@ class Library {
         }
     }
 } // class for library
+
+const library = new Library();
+library.addBook(book1); // adding book to library
+library.addBorrower(borrower1); // adding borrower to library
+library.listBooks(); // Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 5
+
+library.lendBook(201, 123456); // borrows book
+console.log(book1.getDetails());
+console.log(borrower1.borrowedBooks); // Book { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', isbn: 123456, copies: 3 }
+
+library.returnBook(201, 123456); // returns book
+console.log(book1.getDetails());
+
+console.log(borrower1.borrowedBooks); // []
