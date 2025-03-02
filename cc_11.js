@@ -58,3 +58,20 @@ class Library {
         this.borrowers.push(borrower); // adds brrower to array
     }
     
+    // Task 4 implementing book borrowing
+    lendBook(borrowerId, isbn) {
+        const book = this.books.find(book => book.isbn === isbn); // finds book by isbn
+        const borrower = this.borrowers.find(borrower => borrower.borrowerId === borrowerId); // finds borrower by id
+        if (book && borrower) {
+        if (book.copies > 0) {
+            book.updateCopies(-1); // updates copies
+            borrower.borrowBook(book); // borrows selected book
+            } 
+            else {
+                console.log("No copies available");
+            }
+        } else {
+            console.log("Book or borrower not found")
+        }
+    }
+    
