@@ -74,4 +74,16 @@ class Library {
             console.log("Book or borrower not found")
         }
     }
-    
+
+    //Task 5 implementing book returns
+    returnBook(borrowerId, isbn) {
+        const borrower = this.borrowers.find(b => b.borrowerId === borrowerId); // finds borrower by id
+        const book = this.books.find(b => b.isbn === isbn); // finds book by isbn
+        if (book) {
+            book.updateCopies(1); // updates copies
+            if (borrower) {
+                borrower.returnBook(book); // returns book
+            }
+        }
+    }
+} // class for library
