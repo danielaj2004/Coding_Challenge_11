@@ -19,3 +19,25 @@ console.log(book1.getDetails()); // Title: The Great Gatsby, Author: undefined, 
 
 book1.updateCopies(-1); // udating copies of book
 console.log(book1.getDetails()); // Title: The Great Gatsby, Author: undefined, ISBN: 123456, Copies: 4
+
+// Task 2 creating a borrower class
+class Borrower {
+    constructor(name, borrowerId,) {
+        this.name = name; // string
+        this.borrowerId = borrowerId; // number
+        this.borrowedBooks = []; // array
+    }
+    borrowBook(book) {
+        this.borrowedBooks.push(book); // adding books to array
+    }
+    returnBook(book) {
+        this.borrowedBooks = this.borrowedBooks.filter(b => b !== book); // removing books to array
+    }
+}; // class for borrower
+
+const borrower1 = new Borrower("Alice Johnson", 201);
+borrower1.borrowBook("The Great Gatsby");
+console.log(borrower1.borrowedBooks); // [ 'The Great Gatsby' ]
+
+borrower1.returnBook("The Great Gatsby");
+console.log(borrower1.borrowedBooks); // []
